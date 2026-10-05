@@ -1,0 +1,46 @@
+# 白名单式忽略：本仓库只发布源码。
+# 运行数据、验证记录与取证产物永不入库——它们包含真实工作内容。
+/*
+
+# 根级放行
+!.gitignore
+!README.md
+!LICENSE
+!workbench.py
+!web/
+!apps/
+!docs/
+!tests/
+!启动工作工具箱.command
+
+# 放行目录内的纵深排除（防将来误加）
+data/
+evidence/
+output/
+.playwright-cli/
+__pycache__/
+*.pyc
+.DS_Store
+
+# apps 内只保留源码、界面与文档
+apps/*/evidence/
+apps/*/fixtures/
+apps/*/verification.json
+apps/*/verification-summary.txt
+apps/*/test-results.txt
+apps/*/sample-evidence.json
+apps/*/*.log
+apps/*/verify_real.py
+apps/delivery/browser-fixture/
+apps/*/.playwright-cli/
+
+# docs 内只保留模块契约
+docs/*
+!docs/模块契约.md
+
+# tests 内只保留单测；browser 脚本是依赖真实数据的本机取证脚本
+tests/*-browser.js
+
+# 内部交付约束与内部脚本，不对外
+AGENTS.md
+scripts/
